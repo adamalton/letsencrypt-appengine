@@ -19,7 +19,7 @@ It's written to work with a project that uses [Djangae](https://github.com/potat
 
 * Make sure that your application is serving on App Engine on your custom domain and that the code is deployed with `letsencryptae` included (as per above).
 * Download Let's Encrypt.
-* Run `letsencrypt-auto standalone --manual -d yourdomain.com`.
+* Run `letsencrypt-auto certonly --manual -d yourdomain.com`.
 * Answer the questions that it gives you.
 * At some point it will then give you a prompt to add a file that contains a long random-looking string to be served at a random-lloking URL that starts with `/.well-known/acme-challenge/...`.
 * Go to the Django admin of your site, and create a new `Secret` object in the 'letsencryptae' app.
