@@ -8,6 +8,9 @@ class Secret(models.Model):
     url_slug = CharField(primary_key=True)
     secret = CharField()
 
+    class Meta(object):
+        ordering = ('-created',)
+
     def __unicode__(self):
         return self.url_slug
 
