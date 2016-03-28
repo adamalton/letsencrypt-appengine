@@ -15,6 +15,9 @@ class Secret(models.Model):
         return self.url_slug
 
     def clean(self, *args, **kwargs):
+        """ Check that the secret starts with the URL slug plus a dot, as that's the format that
+            Let's Encrypt creates them in.
+        """
         return_value = super(Secret, self).clean(*args, **kwargs)
-        if not self.secret.startswith(self.url_slug):
+        if not self.secret.startswith(self.url_slug + "."):
             raise ValidationError("The URL slug and the beginning of the secret should be the same.")
